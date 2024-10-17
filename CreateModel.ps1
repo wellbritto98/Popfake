@@ -25,7 +25,7 @@ if (-not (Test-Path -Path $modelsPath)) {
 
 # Define o conteúdo base do arquivo com o namespace e as usings
 $fileContent = @"
-using $className.Models.Base;
+using $baseProjectName.Models.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
