@@ -241,7 +241,7 @@ using $baseProjectName.Services.Interfaces;
 
 namespace $baseProjectName.Services
 {
-    public class ${className}Service : GenericService<${className}Entity>, I${className}Service
+    public class ${className}Service : GenericService<${className}>, I${className}Service
     {
         private readonly I${className}Repository _${className.ToLower()}Repository;
 
@@ -275,7 +275,7 @@ public class ${className}QueryParams
 {
     public int Id { get; set; }
 }
-public class ${className}Controller : GenericController<${className}Entity, Insert${className}Dto, Read${className}Dto, Update${className}Dto, ${className}QueryParams>
+public class ${className}Controller : GenericController<${className}, Insert${className}Dto, Read${className}Dto, Update${className}Dto, ${className}QueryParams>
 {
     public ${className}Controller(I${className}Service service, IMapper mapper, IHttpContextAccessor httpContextAccessor) : base(service, mapper, httpContextAccessor)
     {
