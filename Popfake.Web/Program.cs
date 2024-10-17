@@ -42,7 +42,8 @@ var secretKey = builder.Configuration["JwtConfig:Secret"];
 //using POstgreSQL
 builder.Services.AddDbContext<DataContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        b => b.MigrationsAssembly("Popfake.Web"));
 });
 
 builder.Services.AddAuthentication(options =>
