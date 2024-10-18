@@ -5,18 +5,18 @@ param (
     [string]$updateDto,
     [string]$readDto
 )
-
 $baseProjectName = "PopFake"
 # Caminho da pasta do modelo
-$modelsPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Models"
-$dtosPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Data\Dtos\$className" + "Dtos"
-$profilesPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Data\Dtos\AutoMapperProfiles"
-$dataContextPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Data\DataContext.cs"
-$interfaceRepositoryPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Repository\Interfaces\"
-$repositoryPath ="D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Repository\Repositorys"
-$interfaceServicesPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Services\Interfaces"
-$servicePath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Services\Services"
-$controllerPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Web\Controllers"
+$modelsPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Models"
+$dtosPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Data\Dtos\$className" + "Dtos"
+$profilesPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Data\Dtos\AutoMapperProfiles"
+$dataContextPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Data\DataContext.cs"
+$interfaceRepositoryPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Repository\Interfaces\"
+$repositoryPath ="C:\Projetos\C#\$baseProjectName\$baseProjectName.Repository\Repositorys"
+$interfaceServicesPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Services\Interfaces"
+$servicePath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Services\Services"
+$controllerPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Web\Controllers"
+$programCsPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Web\Program.cs"
 
 # Verifica se a pasta existe, se não, cria a pasta
 if (-not (Test-Path -Path $modelsPath)) {
@@ -292,3 +292,34 @@ New-Item -Path $controllerFileName -ItemType File -Force
 Set-Content -Path $controllerFileName -Value $controllerContent
 
 Write-Host "Controller criado com sucesso em $controllerPath!"
+
+
+
+
+# Verifica se o arquivo Program.cs existe
+if (Test-Path -Path $programCsPath) {
+    # Adiciona a nova linha para o AddScoped no local apropriado
+    $serviceLine = "builder.Services.AddScoped<I${className}Service, ${className}Service>();"
+    $repositoryLine = "builder.Services.AddScoped<I${className}Repository, ${className}Repository>();"
+    
+    # Lê o conteúdo do Program.cs
+    $programCsContent = Get-Content -Path $programCsPath
+    
+    # Verifica se as linhas já existem, para evitar duplicações
+    if (($programCsContent -notcontains $serviceLine) -and ($programCsContent -notcontains $repositoryLine)) {
+        # Localiza o ponto onde os services são adicionados (pode usar um comentário específico ou um local fixo)
+        $injectionIndex = ($programCsContent | Select-String -Pattern '//dependency injection inserir novos services e repositorys aqui abaixo').LineNumber
+        
+        # Adiciona as novas linhas logo abaixo do comentário
+        $newContent = $programCsContent[0..$injectionIndex] + $serviceLine + $repositoryLine + $programCsContent[($injectionIndex + 1)..($programCsContent.Length - 1)]
+        
+        # Atualiza o arquivo Program.cs
+        Set-Content -Path $programCsPath -Value $newContent
+        
+        Write-Host "Services e repositories adicionados com sucesso no Program.cs."
+    } else {
+        Write-Host "As linhas já existem no Program.cs, não foi necessário adicionar."
+    }
+} else {
+    Write-Host "Arquivo Program.cs não encontrado em $programCsPath."
+}
