@@ -17,6 +17,10 @@ public class DataContext : IdentityDbContext<User>
     public DbSet<Location> Locations { get; set; }
     public DbSet<Character> Characters { get; set; }
     public DbSet<CompanyShareholder> CompanyShareholders { get; set; }
+    public DbSet<Skill> Skills { get; set; }
+    public DbSet<CharacterSkill> CharacterSkills { get; set; }
+    public DbSet<Atributte> Atributtes { get; set; }
+    public DbSet<CharacterAtributte> CharacterAtributtes { get; set; }
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
     }
@@ -24,20 +28,23 @@ public class DataContext : IdentityDbContext<User>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
+
         modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
         { Id = "2c5e174e-3b0e-446f-86af-483d56fd7210", Name = "Admin", NormalizedName = "ADMIN".ToUpper() });
         modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
         { Id = "2c5e174e-3b0e-446f-86af-483d56fd7211", Name = "Player", NormalizedName = "PLAYER".ToUpper() });
-        
+
         SeedDatabase(modelBuilder);
     }
-        private void SeedDatabase(ModelBuilder modelBuilder)
-        {
-            new UserSeeder().Seed(modelBuilder);
-            new CitySeeder().Seed(modelBuilder);
-            new CompanySeeder().Seed(modelBuilder);
-            new LocationSeeder().Seed(modelBuilder);
-            new CharacterSeeder().Seed(modelBuilder);
-        }
+
+    private void SeedDatabase(ModelBuilder modelBuilder)
+    {
+        new UserSeeder().Seed(modelBuilder);
+        new CitySeeder().Seed(modelBuilder);
+        new CompanySeeder().Seed(modelBuilder);
+        new LocationSeeder().Seed(modelBuilder);
+        new CharacterSeeder().Seed(modelBuilder);
+        new AtributteSeeder().Seed(modelBuilder);
+    }
+
 }

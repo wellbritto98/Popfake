@@ -77,6 +77,14 @@ builder.Services.AddControllers();
 
 //dependency injection inserir novos services e repositorys aqui abaixo
 
+builder.Services.AddScoped<ICharacterAtributteService, CharacterAtributteService>();
+builder.Services.AddScoped<ICharacterAtributteRepository, CharacterAtributteRepository>();
+builder.Services.AddScoped<IAtributteService, AtributteService>();
+builder.Services.AddScoped<IAtributteRepository, AtributteRepository>();
+builder.Services.AddScoped<ICharacterSkillService, CharacterSkillService>();
+builder.Services.AddScoped<ICharacterSkillRepository, CharacterSkillRepository>();
+builder.Services.AddScoped<ISkillService, SkillService>();
+builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 builder.Services.AddScoped<ICompanyShareholderService, CompanyShareholderService>();
 builder.Services.AddScoped<ICompanyShareholderRepository, CompanyShareholderRepository>();
 builder.Services.AddScoped<ICharacterService, CharacterService>();

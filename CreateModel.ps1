@@ -7,16 +7,16 @@ param (
 )
 $baseProjectName = "PopFake"
 # Caminho da pasta do modelo
-$modelsPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Models"
-$dtosPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Data\Dtos\$className" + "Dtos"
-$profilesPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Data\Dtos\AutoMapperProfiles"
-$dataContextPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Data\DataContext.cs"
-$interfaceRepositoryPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Repository\Interfaces\"
-$repositoryPath ="C:\Projetos\C#\$baseProjectName\$baseProjectName.Repository\Repositorys"
-$interfaceServicesPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Services\Interfaces"
-$servicePath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Services\Services"
-$controllerPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Web\Controllers"
-$programCsPath = "C:\Projetos\C#\$baseProjectName\$baseProjectName.Web\Program.cs"
+$modelsPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Models"
+$dtosPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Data\Dtos\$className" + "Dtos"
+$profilesPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Data\Dtos\AutoMapperProfiles"
+$dataContextPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Data\DataContext.cs"
+$interfaceRepositoryPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Repository\Interfaces\"
+$repositoryPath ="D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Repository\Repositorys"
+$interfaceServicesPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Services\Interfaces"
+$servicePath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Services\Services"
+$controllerPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Web\Controllers"
+$programCsPath = "D:\Projetos\Particular\ASPNet\$baseProjectName\$baseProjectName.Web\Program.cs"
 
 # Verifica se a pasta existe, se não, cria a pasta
 if (-not (Test-Path -Path $modelsPath)) {

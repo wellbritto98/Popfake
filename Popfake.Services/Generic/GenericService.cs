@@ -14,32 +14,32 @@ namespace PopFake.Services.GenericService
             _repository = repository;
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }
 
-        public async Task<T> GetByIdAsync(params object[] keyValues)
+        public virtual async Task<T> GetByIdAsync(params object[] keyValues)
         {
             return await _repository.GetByIdAsync(keyValues);
         }
 
-        public async Task<IEnumerable<T>> FindAsync(string json)
+        public virtual async Task<IEnumerable<T>> FindAsync(string json)
         {
             return await _repository.FindAsync(json);
         }
 
-        public async Task<T> AddAsync(T entity)
+        public virtual async Task<T> AddAsync(T entity)
         {
             return await _repository.AddAsync(entity);
         }
 
-        public async Task<T> UpdateAsync(T entity)
+        public virtual async Task<T> UpdateAsync(T entity)
         {
             return await _repository.UpdateAsync(entity);
         }
 
-        public async Task DeleteAsync(params object[] keyValues)
+        public virtual async Task DeleteAsync(params object[] keyValues)
         {
             await _repository.DeleteAsync(keyValues);
         }
