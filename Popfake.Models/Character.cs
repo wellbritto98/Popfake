@@ -17,10 +17,10 @@ public int Age { get; set; }
 public string Gender { get; set; }
 public DateTime BirthAt { get; set; } = DateTime.Now;
 [ForeignKey("City")]
-public int BirthCityId { get; set; }
+public int BirthCityId { get; set; } = 1;
 public virtual City BirthCity { get; set; }
 [ForeignKey("Location")]
-public int CurrentLocationId { get; set; }
+public int CurrentLocationId { get; set; } = 1;
 public virtual Location CurrentLocation { get; set; }
 public ulong Money { get; set; } = 0;
 
