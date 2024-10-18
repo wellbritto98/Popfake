@@ -66,16 +66,22 @@ builder.Services.AddIdentityApiEndpoints<User>()
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<DataContext>();
 builder.Services.AddHttpClient();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
-builder.Services.AddScoped<IExampleRepository, ExampleRepository>();
+
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
-builder.Services.AddScoped<IExampleService, ExampleService>();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddControllers();
+
+//dependency injection inserir novos services e repositorys aqui abaixo
+
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+builder.Services.AddScoped<IExampleRepository, ExampleRepository>();
+builder.Services.AddScoped<IExampleService, ExampleService>();
+
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.SignIn.RequireConfirmedAccount = true;
