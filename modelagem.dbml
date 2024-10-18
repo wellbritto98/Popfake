@@ -1,29 +1,182 @@
-//MMORPG Web Text Based Game - Modelagem de Dados - Web API
-
-Table user {
-    id varchar(255) [pk, increment] //GUID
-    name varchar(255) // not null
-    email varchar(255) // not null
-    phone varchar(15) // not null 
-    birthDate date // not null
-    password varchar(255) // not null
-    role varchar // not null
-    email_verified boolean // not null
-    created_at timestamp
+Table AspNetRoles {
+  Id text [pk]
+  Name varchar(256)
+  NormalizedName varchar(256)
+  ConcurrencyStamp text
+  indexes {
+    (NormalizedName) [unique]
+  }
 }
 
-Table character {
-    id varchar(255) [pk, increment] //GUID
-    name varchar(255) // not null
-    surname varchar(255) // not null
-    age int // not null
-    birthDate date // not null date of creation
-    strength int // not null
-    dexterity int // not null
-    constitution int // not null
-    intelligence int // not null
-    wisdom int // not null
-    charisma int // not null
-    avatar varchar(255) // not null image link
-    user_id varchar(255) [ref: > user.id] //GUID
+Table AspNetUsers {
+  Id text [pk]
+  Nickname text
+  RegisteredAt timestamp
+  DataNascimento timestamp
+  LastLoginAt timestamp
+  RefreshToken text
+  TokenExpiredAt timestamp
+  TokenCreatedAt timestamp
+  UserName varchar(256)
+  NormalizedUserName varchar(256)
+  Email varchar(256)
+  NormalizedEmail varchar(256)
+  EmailConfirmed bool
+  PasswordHash text
+  SecurityStamp text
+  ConcurrencyStamp text
+  PhoneNumber text
+  PhoneNumberConfirmed bool
+  TwoFactorEnabled bool
+  LockoutEnd timestamptz
+  LockoutEnabled bool
+  AccessFailedCount int
+  indexes {
+    (NormalizedEmail)
+    (NormalizedUserName) [unique]
+  }
 }
+
+Table Cities {
+  Id int [pk, increment]
+  Name text
+  Timezone text
+}
+
+Table Examples {
+  Id int [pk, increment]
+  Name text
+  Nickname text
+  IsConfirmed bool
+}
+
+Table AspNetRoleClaims {
+  Id int [pk, increment]
+  RoleId text [ref: > AspNetRoles.Id]
+  ClaimType text
+  ClaimValue text
+  indexes {
+    (RoleId)
+  }
+}
+
+Table AspNetUserClaims {
+  Id int [pk, increment]
+  UserId text [ref: > AspNetUsers.Id]
+  ClaimType text
+  ClaimValue text
+  indexes {
+    (UserId)
+  }
+}
+
+Table AspNetUserLogins {
+  LoginProvider text [pk]
+  ProviderKey text [pk]
+  ProviderDisplayName text
+  UserId text [ref: > AspNetUsers.Id]
+  indexes {
+    (UserId)
+  }
+}
+
+Table AspNetUserRoles {
+  UserId text [pk, ref: > AspNetUsers.Id]
+  RoleId text [pk, ref: > AspNetRoles.Id]
+  indexes {
+    (RoleId)
+  }
+}
+
+Table AspNetUserTokens {
+  UserId text [pk, ref: > AspNetUsers.Id]
+  LoginProvider text [pk]
+  Name text [pk]
+  Value text
+}
+
+Table Companies {
+  Id int [pk, increment]
+  Name text
+  CityId int [ref: > Cities.Id]
+  CompanyType int
+  Money numeric(20)
+  indexes {
+    (CityId)
+  }
+}
+
+Table Locations {
+  Id int [pk, increment]
+  Name text
+  Quality int
+  TypeId int
+  Type int
+  CompanyId int [ref: > Companies.Id]
+  Money numeric(20)
+  CityId int [default: 0, ref: > Cities.Id]
+  indexes {
+    (CityId)
+    (CompanyId)
+  }
+}
+
+Table Characters {
+  Id int [pk, increment]
+  UserId text [ref: > AspNetUsers.Id]
+  FirstName text
+  LastName text
+  Age int
+  Gender text
+  BirthAt timestamp
+  BirthCityId int [ref: > Cities.Id]
+  CurrentLocationId int [ref: > Locations.Id]
+  Money numeric(20)
+  indexes {
+    (BirthCityId)
+    (CurrentLocationId)
+    (UserId)
+  }
+}
+
+Table CompanyShareholders {
+  CharacterId int [pk, ref: > Characters.Id]
+  CompanyId int [pk, ref: > Companies.Id]
+  Shares int
+  IsPresident bool
+  indexes {
+    (CompanyId)
+  }
+}
+
+Table Abilities {
+    Id int [pk, increment]
+    Name text
+    Description text
+}
+
+Table CharacterAbilities {
+    CharacterId int [pk, ref: > Characters.Id]
+    AbilityId int [pk, ref: > Abilities.Id]
+    Level int
+    indexes {
+        (AbilityId)
+    }
+}
+
+Table Atributtes {
+    Id int [pk, increment]
+    Name text
+    Description text
+}
+
+Table CharacterAtributtes {
+    CharacterId int [pk, ref: > Characters.Id]
+    AtributteId int [pk, ref: > Atributtes.Id]
+    Level int
+    indexes {
+        (AtributteId)
+    }
+}
+
+

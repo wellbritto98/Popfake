@@ -25,4 +25,6 @@ public virtual Location CurrentLocation { get; set; }
 public ulong Money { get; set; } = 0;
 
 public virtual ICollection<CompanyShareholder> CompanyShareholders { get; set; }
+public virtual ICollection<CharacterSkill> CharacterSkills { get; set; }
+public virtual ICollection<CharacterAttribute> CharacterAttributes { get; set; }
 }
