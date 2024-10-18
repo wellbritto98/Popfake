@@ -12,6 +12,7 @@ public class DataContext : IdentityDbContext<User>
     public DbSet<ExampleEntity> Examples { get; set; }
 
     public DbSet<City> Cities { get; set; }
+    public DbSet<Company> Companies { get; set; }
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
     }
