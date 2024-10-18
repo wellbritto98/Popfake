@@ -12,6 +12,9 @@ public string Name { get; set; }
 public int Quality { get; set; } = 0;
 public LocationType TypeId { get; set; }
 public virtual LocationType Type { get; set; }
+[ForeignKey("City")]
+public int CityId { get; set; }
+public virtual City City { get; set; }
 [ForeignKey("Company")]
 public int CompanyId { get; set; }
 public virtual Company Company { get; set; }

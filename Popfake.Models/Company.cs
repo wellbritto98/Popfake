@@ -15,4 +15,5 @@ public virtual City City { get; set; }
 public CompanyType CompanyType { get; set; }
 public ulong Money { get; set; } = 0;
 public virtual ICollection<Location> Locations { get; set; }
+public virtual ICollection<CompanyShareholder>? CompanyShareholders { get; set; }
 }

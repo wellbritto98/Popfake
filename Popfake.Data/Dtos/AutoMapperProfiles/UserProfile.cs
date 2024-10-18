@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PopFake.Data.Dtos.Auth;
-using PopFake.Models.Auth;
+using PopFake.Models;
 
 namespace PopFake.Data.Dtos.AutoMapperProfiles;
 

@@ -10,7 +10,7 @@ public class City : BaseEntity
 public int Id { get; set; }
 public string Name { get; set; }
 public string Timezone { get; set; }
-
+public virtual ICollection<Location> Locations { get; set; }
 public virtual ICollection<Company> Companies { get; set; }
 public virtual ICollection<Character> Characters { get; set; }
 

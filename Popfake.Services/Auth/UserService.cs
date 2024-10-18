@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Newtonsoft.Json;
 using PopFake.Data.Dtos.Auth;
 using PopFake.Models.ApiResponse;
-using PopFake.Models.Auth;
+using PopFake.Models;
 using PopFake.Services.Interfaces;
 
 

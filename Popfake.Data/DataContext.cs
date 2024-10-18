@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PopFake.Models;
-using PopFake.Models.Auth;
+using PopFake.Models;
 
 
 namespace PopFake.Data;
@@ -15,6 +15,7 @@ public class DataContext : IdentityDbContext<User>
     public DbSet<Company> Companies { get; set; }
     public DbSet<Location> Locations { get; set; }
     public DbSet<Character> Characters { get; set; }
+    public DbSet<CompanyShareholder> CompanyShareholders { get; set; }
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
     }

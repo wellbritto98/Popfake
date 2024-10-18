@@ -8,7 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PopFake.Data;
 using PopFake.Models;
-using PopFake.Models.Auth;
+using PopFake.Models;
 using PopFake.Repository.GenericRepository;
 using PopFake.Repository.Interfaces;
 using PopFake.Repository.Repositorys;
@@ -77,6 +77,8 @@ builder.Services.AddControllers();
 
 //dependency injection inserir novos services e repositorys aqui abaixo
 
+builder.Services.AddScoped<ICompanyShareholderService, CompanyShareholderService>();
+builder.Services.AddScoped<ICompanyShareholderRepository, CompanyShareholderRepository>();
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<ICharacterRepository, CharacterRepository>();
 builder.Services.AddScoped<ILocationService, LocationService>();

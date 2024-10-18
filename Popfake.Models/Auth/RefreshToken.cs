@@ -1,4 +1,4 @@
-namespace PopFake.Models.Auth;
+namespace PopFake.Models;
 
 public class RefreshToken
 {
