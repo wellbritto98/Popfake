@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using PopFake.Models;
 
 namespace PopFake.Data.Dtos;
 

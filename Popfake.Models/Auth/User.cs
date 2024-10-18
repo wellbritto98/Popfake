@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace PopFake.Models.Auth;
+namespace PopFake.Models;
 
 public class User : IdentityUser
 {
@@ -11,4 +11,5 @@ public class User : IdentityUser
     public string RefreshToken { get; set; } = string.Empty;
     public DateTime TokenExpiredAt { get; set; }
     public DateTime TokenCreatedAt { get; set; }
+    public virtual ICollection<Character> Characters { get; set; }
 }

@@ -12,4 +12,6 @@ public string Name { get; set; }
 public string Timezone { get; set; }
 
 public virtual ICollection<Company> Companies { get; set; }
+public virtual ICollection<Character> Characters { get; set; }
+
 }

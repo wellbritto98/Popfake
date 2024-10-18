@@ -14,6 +14,7 @@ public class DataContext : IdentityDbContext<User>
     public DbSet<City> Cities { get; set; }
     public DbSet<Company> Companies { get; set; }
     public DbSet<Location> Locations { get; set; }
+    public DbSet<Character> Characters { get; set; }
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
     }

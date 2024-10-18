@@ -16,4 +16,6 @@ public virtual LocationType Type { get; set; }
 public int CompanyId { get; set; }
 public virtual Company Company { get; set; }
 public ulong Money { get; set; } = 0;
+
+public virtual ICollection<Character> Characters { get; set; }
 }

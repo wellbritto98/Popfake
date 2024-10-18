@@ -77,6 +77,8 @@ builder.Services.AddControllers();
 
 //dependency injection inserir novos services e repositorys aqui abaixo
 
+builder.Services.AddScoped<ICharacterService, CharacterService>();
+builder.Services.AddScoped<ICharacterRepository, CharacterRepository>();
 builder.Services.AddScoped<ILocationService, LocationService>();
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
