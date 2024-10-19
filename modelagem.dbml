@@ -132,6 +132,7 @@ Table Characters {
   BirthCityId int [ref: > Cities.Id]
   CurrentLocationId int [ref: > Locations.Id]
   Money numeric(20)
+  MaxWeight numeric(20)
   indexes {
     (BirthCityId)
     (CurrentLocationId)
@@ -149,18 +150,18 @@ Table CompanyShareholders {
   }
 }
 
-Table Abilities {
+Table Skills {
     Id int [pk, increment]
     Name text
     Description text
 }
 
-Table CharacterAbilities {
+Table CharacterSkills {
     CharacterId int [pk, ref: > Characters.Id]
-    AbilityId int [pk, ref: > Abilities.Id]
+    SkillId int [pk, ref: > Skills.Id]
     Level int
     indexes {
-        (AbilityId)
+        (SkillId)
     }
 }
 
@@ -178,5 +179,25 @@ Table CharacterAtributtes {
         (AtributteId)
     }
 }
+
+Table Items {
+    Id int [pk, increment]
+    Name text
+    Description text
+    Type ItemType
+    Function ItemFunction  // Ou considerar um enum se as funções forem fixas
+    Weight numeric(20, 2)  // Peso de um único item
+}
+Table CharacterInventory {
+    CharacterId int [pk, ref: > Characters.Id]
+    ItemId int [pk, ref: > Items.Id]
+    Quantity int
+    indexes {
+        (ItemId, CharacterId)
+    }
+}
+
+
+
 
 
