@@ -24,10 +24,6 @@ namespace PopFake.Services.GenericService
             return await _repository.GetByIdAsync(keyValues);
         }
 
-        public virtual async Task<IEnumerable<T>> FindAsync(string json)
-        {
-            return await _repository.FindAsync(json);
-        }
 
         public virtual async Task<T> AddAsync(T entity)
         {

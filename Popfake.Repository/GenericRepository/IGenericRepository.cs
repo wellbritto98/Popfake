@@ -29,7 +29,7 @@ public interface IGenericRepository<T> where T : BaseEntity
     /// - {"Idade@maior": "30@System.Int32"}
     /// </param>
     /// <returns>Uma lista de entidades que atendem aos critérios de filtro.</returns>
-    Task<IEnumerable<T>> FindAsync(string json);
+    Task<IEnumerable<T>> FindAsync(Func<IQueryable<T>, IQueryable<T>> queryFilter = null);
 
     /// <summary>
     /// Obtém uma entidade por seus valores chave.
