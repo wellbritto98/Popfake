@@ -138,13 +138,7 @@ public class UserService : IUserService
         {
             var userRole = await _userManager.GetRolesAsync(user);
             var token = _jwtService.GenerateToken(new JwtDto { Email = user.Email, Id = user.Id, Role = userRole[0] });
-            _httpContextAccessor.HttpContext.Response.Cookies.Append("jwt", token, new CookieOptions
-            {
-                HttpOnly = true,
-                SameSite = SameSiteMode.None,
-                Secure = true,
-                Expires = DateTime.UtcNow.AddHours(24)
-            });
+            _jwtService.SetNewJwtCookies(token);
 
             var refreshToken = GenerateRefreshToken();
             SetRefreshTokenInCookie(refreshToken);
@@ -160,6 +154,25 @@ public class UserService : IUserService
         {
             return new ApiResponse { Success = false, Message = "Falha ao logar usuário" };
         }
+    }
+
+    public async Task<JwtDto> GetUserLogged()
+    {
+        var userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        var userEmailClaim = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email);
+        var userRoleClaim = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Role);
+
+        if (userIdClaim == null || userEmailClaim == null || userRoleClaim == null)
+        {
+            return null;
+        }
+
+        return new JwtDto
+        {
+            Email = userEmailClaim.Value,
+            Id = userIdClaim.Value,
+            Role = userRoleClaim.Value
+        };
     }
 
     private RefreshToken GenerateRefreshToken()
@@ -194,7 +207,7 @@ public class UserService : IUserService
 
     public async Task<ApiResponse> RefreshToken()
     {
-        var userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst(x => x.Type == "id");
+        var userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
         var userEmailClaim = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email);
 
         if (userIdClaim == null || userEmailClaim == null)

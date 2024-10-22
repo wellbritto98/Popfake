@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Org.BouncyCastle.Asn1.Ocsp;
@@ -12,11 +13,12 @@ namespace PopFake.Services.Auth;
 public class JwtService : IJwtService
 {
     private IConfiguration _configuration;
+    private IHttpContextAccessor _httpContextAccessor;
 
-    public JwtService(IConfiguration configuration)
+    public JwtService(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
     {
         _configuration = configuration;
-
+        _httpContextAccessor = httpContextAccessor;
     }
     public string GenerateToken(JwtDto dto)
     {
@@ -24,8 +26,9 @@ public class JwtService : IJwtService
         Claim[] claims = new Claim[]
         {
             new Claim(ClaimTypes.Email, dto.Email),
-            new Claim("id", dto.Id),
-            new Claim(ClaimTypes.Role, dto.Role)
+            new Claim(ClaimTypes.NameIdentifier, dto.Id),
+            new Claim(ClaimTypes.Role, dto.Role),
+            new Claim("activeCharacterId", dto.activeCharacterId.ToString())
         };
 
         var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
@@ -40,6 +43,17 @@ public class JwtService : IJwtService
 
         var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
         return tokenString;
+    }
+
+    public void SetNewJwtCookies(string token)
+    {
+        _httpContextAccessor.HttpContext.Response.Cookies.Append("jwt", token, new CookieOptions
+                    {
+                        HttpOnly = true,
+                        SameSite = SameSiteMode.None,
+                        Secure = true,
+                        Expires = DateTime.UtcNow.AddHours(24)
+                    });
     }
 
 

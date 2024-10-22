@@ -14,4 +14,5 @@ public DateTime? BirthAt { get; set; }
 public int BirthCityId { get; set; }
 public int CurrentLocationId { get; set; }
 public ulong Money { get; set; }
+public string AvatarUrl { get; set; }
 }

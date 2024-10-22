@@ -37,6 +37,7 @@ builder.Services.AddSwaggerGen(options =>
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 var secretKey = builder.Configuration["JwtConfig:Secret"];
+builder.Services.AddHttpContextAccessor();
 
 
 //using POstgreSQL
@@ -126,10 +127,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseAuthentication();
+app.UseAuthentication();  
 app.UseAuthorization();
+app.MapControllers();
 app.MapIdentityApi<User>();
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
-app.MapControllers();
+
 app.Run();

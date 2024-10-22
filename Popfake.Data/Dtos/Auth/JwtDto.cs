@@ -10,5 +10,7 @@ public class JwtDto
     public string Id { get; set; }
     [Required]
     public string Role { get; set; }
+    
+    public int? activeCharacterId { get; set; }
 
 }

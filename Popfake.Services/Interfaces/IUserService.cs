@@ -9,5 +9,6 @@ namespace PopFake.Services.Interfaces
         Task<ApiResponse> RegisterUser(RegisterUserDto dto);
         Task<ApiResponse> LoginUser(LoginUserDto dto);
         Task<ApiResponse> RefreshToken();
+        Task<JwtDto> GetUserLogged();
     }
 }

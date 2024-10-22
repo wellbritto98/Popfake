@@ -23,6 +23,7 @@ public virtual City BirthCity { get; set; }
 public int CurrentLocationId { get; set; } = 1;
 public virtual Location CurrentLocation { get; set; }
 public ulong Money { get; set; } = 0;
+public string? AvatarUrl { get; set; }
 
 public virtual ICollection<CompanyShareholder> CompanyShareholders { get; set; }
 public virtual ICollection<CharacterSkill> CharacterSkills { get; set; }

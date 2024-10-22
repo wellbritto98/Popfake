@@ -4,10 +4,11 @@ namespace PopFake.Data.Dtos;
 
 public class InsertCharacterDto : BaseDto
 {
-    public string UserId { get; set; }
+public string UserId { get; set; }
 public string FirstName { get; set; }
 public string LastName { get; set; }
 public int Age { get; set; }
 public string Gender { get; set; }
 public int BirthCityId { get; set; }
+public string? AvatarUrl { get; set; }
 }

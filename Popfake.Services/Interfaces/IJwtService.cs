@@ -6,5 +6,6 @@ namespace PopFake.Services.Interfaces
     {
         string GenerateToken(JwtDto dto);
         bool VerifyJwt(string token);
+        void SetNewJwtCookies(string token);
     }
 }

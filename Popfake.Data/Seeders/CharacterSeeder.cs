@@ -77,21 +77,21 @@ namespace PopFake.Data.Seeders
             // Criação de 3 personagens para cada usuário, com datas de nascimento em outubro de 2024
             Character[] characters =
             {
-                new Character { Id = 1, UserId = "1", FirstName = "John", LastName = "Doe", Age = 25, Gender = "Male", BirthAt = new DateTime(2024, 10, 5), BirthCityId = 1, CurrentLocationId = 1 },
-                new Character { Id = 2, UserId = "1", FirstName = "Jane", LastName = "Doe", Age = 22, Gender = "Female", BirthAt = new DateTime(2024, 10, 6), BirthCityId = 1, CurrentLocationId = 1 },
-                new Character { Id = 3, UserId = "1", FirstName = "Bob", LastName = "Smith", Age = 30, Gender = "Male", BirthAt = new DateTime(2024, 10, 7), BirthCityId = 1, CurrentLocationId = 1 },
+                new Character { Id = 1, UserId = "1", FirstName = "John", LastName = "Doe", Age = 25, Gender = "M", BirthAt = new DateTime(2024, 10, 5), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
+                new Character { Id = 2, UserId = "1", FirstName = "Jane", LastName = "Doe", Age = 22, Gender = "F", BirthAt = new DateTime(2024, 10, 6), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
+                new Character { Id = 3, UserId = "1", FirstName = "Bob", LastName = "Smith", Age = 30, Gender = "M", BirthAt = new DateTime(2024, 10, 7), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
 
-                new Character { Id = 4, UserId = "2", FirstName = "Alice", LastName = "Johnson", Age = 28, Gender = "Female", BirthAt = new DateTime(2024, 10, 8), BirthCityId = 1, CurrentLocationId = 1 },
-                new Character { Id = 5, UserId = "2", FirstName = "Charlie", LastName = "Brown", Age = 33, Gender = "Male", BirthAt = new DateTime(2024, 10, 9), BirthCityId = 1, CurrentLocationId = 1 },
-                new Character { Id = 6, UserId = "2", FirstName = "Dave", LastName = "Wilson", Age = 35, Gender = "Male", BirthAt = new DateTime(2024, 10, 10), BirthCityId = 1, CurrentLocationId = 1 },
+                new Character { Id = 4, UserId = "2", FirstName = "Alice", LastName = "Johnson", Age = 28, Gender = "F", BirthAt = new DateTime(2024, 10, 8), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
+                new Character { Id = 5, UserId = "2", FirstName = "Charlie", LastName = "Brown", Age = 33, Gender = "M", BirthAt = new DateTime(2024, 10, 9), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
+                new Character { Id = 6, UserId = "2", FirstName = "Dave", LastName = "Wilson", Age = 35, Gender = "M", BirthAt = new DateTime(2024, 10, 10), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
 
-                new Character { Id = 7, UserId = "3", FirstName = "Emily", LastName = "Davis", Age = 21, Gender = "Female", BirthAt = new DateTime(2024, 10, 11), BirthCityId = 1, CurrentLocationId = 1 },
-                new Character { Id = 8, UserId = "3", FirstName = "Frank", LastName = "Miller", Age = 27, Gender = "Male", BirthAt = new DateTime(2024, 10, 12), BirthCityId = 1, CurrentLocationId = 1 },
-                new Character { Id = 9, UserId = "3", FirstName = "Grace", LastName = "Lee", Age = 19, Gender = "Female", BirthAt = new DateTime(2024, 10, 13), BirthCityId = 1, CurrentLocationId = 1 },
+                new Character { Id = 7, UserId = "3", FirstName = "Emily", LastName = "Davis", Age = 21, Gender = "F", BirthAt = new DateTime(2024, 10, 11), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
+                new Character { Id = 8, UserId = "3", FirstName = "Frank", LastName = "Miller", Age = 27, Gender = "M", BirthAt = new DateTime(2024, 10, 12), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
+                new Character { Id = 9, UserId = "3", FirstName = "Grace", LastName = "Lee", Age = 19, Gender = "F", BirthAt = new DateTime(2024, 10, 13), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
 
-                new Character { Id = 10, UserId = "4", FirstName = "Hank", LastName = "Taylor", Age = 23, Gender = "Male", BirthAt = new DateTime(2024, 10, 14), BirthCityId = 1, CurrentLocationId = 1 },
-                new Character { Id = 11, UserId = "4", FirstName = "Ivy", LastName = "White", Age = 26, Gender = "Female", BirthAt = new DateTime(2024, 10, 15), BirthCityId = 1, CurrentLocationId = 1 },
-                new Character { Id = 12, UserId = "4", FirstName = "Jack", LastName = "Black", Age = 32, Gender = "Male", BirthAt = new DateTime(2024, 10, 16), BirthCityId = 1, CurrentLocationId = 1 }
+                new Character { Id = 10, UserId = "4", FirstName = "Hank", LastName = "Taylor", Age = 23, Gender = "M", BirthAt = new DateTime(2024, 10, 14), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
+                new Character { Id = 11, UserId = "4", FirstName = "Ivy", LastName = "White", Age = 26, Gender = "F", BirthAt = new DateTime(2024, 10, 15), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" },
+                new Character { Id = 12, UserId = "4", FirstName = "Jack", LastName = "Black", Age = 32, Gender = "M", BirthAt = new DateTime(2024, 10, 16), BirthCityId = 1, CurrentLocationId = 1, AvatarUrl = "https://img.freepik.com/psd-gratuitas/ilustracao-3d-de-avatar-ou-perfil-humano_23-2150671122.jpg" }
             };
 
             // Adiciona os personagens ao modelo
